@@ -1,0 +1,11 @@
+ /* ./src/index.css */
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 
+
+ @layer components{
+    .headerlinks{
+        @apply hover:text-gray-300  delay-75 cursor-pointer transition duration-200 ease-in-out
+        }
+}
