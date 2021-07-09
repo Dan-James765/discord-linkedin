@@ -8,4 +8,12 @@
     .headerlinks{
         @apply hover:text-gray-300  delay-75 cursor-pointer transition duration-200 ease-in-out
         }
+
+    .homeicons{
+        @apply  h-12 rounded-full   cursor-pointer 
+        }
+
+    .servertext{
+        @apply  text-gray-200 font-semibold 
+        }
 }

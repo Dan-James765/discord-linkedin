@@ -33,6 +33,7 @@ function App() {
       
       <Route exact path="/inbox">
         <Home/> 
+      
       </Route>
 
       </Switch>
