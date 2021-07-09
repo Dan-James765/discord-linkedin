@@ -1,8 +1,24 @@
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BiPlus } from 'react-icons/bi';
 import { FaChevronDown } from 'react-icons/fa';
+import { db } from '../../firebase';
+import Channel from './Channel';
+import { useCollection } from 'react-firebase-hooks/firestore'
 
 function Home() {
+
+    const handleAddChannel = () => {
+        const channelName= prompt("Enter a new channel name")
+        if(channelName) {
+            db.collection("channels").add({
+                channelName: channelName,
+            })
+        }
+    }
+
+    const [channels] = useCollection(db.collection("channels"))
+
+    
     return (
         <>
         <div className="flex">
@@ -28,8 +44,17 @@ function Home() {
             <div className="flex items-center">
             <FaChevronDown className="servertext h-4 text-xl pl-2 "/> 
                 <h1 className="servertext pl-2">Channels</h1>
-                <BiPlus className="servertext ml-auto h-8 w-8 pr-3 cursor-pointer hover:text-white"/> 
+                <BiPlus className="servertext ml-auto h-8 w-8 pr-3 cursor-pointer hover:text-white" onClick={handleAddChannel}/> 
+                
             </div>
+
+            {channels?.docs.map((doc) => (
+                        <Channel
+                        key={doc.id}
+                        id={doc.id}
+                        channelName={doc.data().channelName}
+                        />
+                    ))}
         </div>
         
         </div>
