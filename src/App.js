@@ -20,7 +20,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <>
 
       <Router>
       {!user && <Redirect to="/"/>}
@@ -33,7 +33,10 @@ function App() {
       
       <Route exact path="/inbox">
         <Home/> 
-      
+      </Route>
+
+      <Route exact path="/inbox/:id">
+        <Home/> 
       </Route>
 
       </Switch>
@@ -41,7 +44,7 @@ function App() {
       </Router>
       
       
-    </div>
+    </>
   );
 }
 
