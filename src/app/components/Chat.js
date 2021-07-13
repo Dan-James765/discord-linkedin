@@ -93,7 +93,7 @@ scrollToBottom()
                     <button hidden type="submit" onClick={sendMessage}>Send</button>
                     </form>
             <BiGift  className="mr-2 headerlinks"/>
-                    <BiSmile className="headerlinks "/> 
+                    <BiSmile className="headerlinks"/> 
             </div>
 
             
