@@ -11,6 +11,8 @@ import  { useState } from 'react'
 import { useEffect } from "react";
 import firebase from "firebase";
 import Post from "./Post";
+import { Redirect } from "react-router-dom"
+import FlipMove from "react-flip-move"
 
 
 
@@ -42,9 +44,10 @@ useEffect(() => {
     e.preventDefault();
   
     db.collection("posts").add({
-      name: "user.displayName",
+      name: user?.displayName,
       message: input,
-      photoUrl: "",
+      photoUrl:   user?.photoURL,
+      email: user?.email, 
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       
     });
@@ -57,8 +60,9 @@ useEffect(() => {
 
     return (
         <>
+                {!user && <Redirect to="/"/>}
         <Header/> 
-        <div className="flex items-center justify-center pt-10 flex-col">
+        <div className="flex items-center justify-center pt-10 flex-col ">
         <div className="border  w-96  py-4 rounded-lg   shadow-lg h-40 ">
             <div className="flex justify-center align-middle ">
         <img src={user?.photoURL} alt="" className="rounded-full h-10 object-contain cursor-pointer flex "/>
@@ -91,20 +95,22 @@ useEffect(() => {
             />
           </div>
         </div>
-        <div className="">
+       <div className="">
+       <FlipMove>
         {posts.map(
-            ({ id, data: { name, description, message, photoUrl, timestamp } }) => (
+            ({ id, data: { name, email, message, photoUrl } }) => (
               <Post
                 key={id}
                 name={name}
-                description={description}
+                email={email}
                 message={message}
                 photoUrl={photoUrl}
-                timestamp={timestamp}
               />
             )
           )}
+          </FlipMove>
           </div>
+          
 
         
               
