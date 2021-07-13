@@ -4,6 +4,9 @@ import {AiFillHome } from 'react-icons/ai';
 import { auth, provider } from '../../firebase';
 import { useHistory } from 'react-router-dom';
 import {useAuthState} from "react-firebase-hooks/auth"
+import { BiTrendingUp } from 'react-icons/bi';
+import { Link } from 'react-router-dom'
+
 
 function Header() {
 
@@ -33,9 +36,15 @@ function Header() {
    <h1 className="headerlinks">Walkthrough</h1>
 </div>
 <div className="flex space-x-6 text-white text-lg items-center">
+    <Link to="/">
     <AiFillHome className="headerlinks"/>
+    </Link>
     <FaUserFriends className="headerlinks"/>
     <SiSparkpost className="headerlinks"/>
+    <Link to="/trending">
+                <BiTrendingUp className="headerlinks"/> 
+                </Link>
+
     
     <button onClick={!user ? signIn : () => history.push("/inbox")} className="bg-white p-2 rounded-full text-xs md:text-sm px-4 focus:outline-none  transition duration-200 ease-in-out whitespace-nowrap font-medium text-black hover:text-gray-600" > {!user ? "Login" : "Open Discord"} </button>
     

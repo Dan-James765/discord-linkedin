@@ -7,6 +7,7 @@ import Home from './app/components/Home';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Redirect } from "react-router-dom"
 import { auth } from './firebase';
+import Trending from './app/components/Trending';
 
 
 
@@ -37,6 +38,11 @@ function App() {
 
       <Route exact path="/inbox/:id">
         <Home/> 
+      </Route>
+
+      <Route exact path="/trending">
+        <Trending/> 
+
       </Route>
 
       </Switch>

@@ -3,13 +3,15 @@ import { selectChannelId, selectChannelName } from "../../features/counter/chann
 import { BsBellFill, BsPlusCircleFill } from 'react-icons/bs';
 import { AiFillMessage } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
-import { BiGift, BiSmile } from "react-icons/bi";
+import { BiGift, BiSmile, BiTrendingUp } from "react-icons/bi";
 import { useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import firebase from "firebase"
 import { useCollection } from "react-firebase-hooks/firestore"
 import Messages from "./Messages";
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -72,7 +74,9 @@ scrollToBottom()
                 <BsBellFill className="headerlinks"/> 
                 <AiFillMessage className="headerlinks"/> 
                 <FaUserAlt className="headerlinks"/> 
-            
+                <Link to="/trending">
+                <BiTrendingUp className="headerlinks"/> 
+                </Link>
                 <input type="text" placeholder="Search... " className=" rounded-full bg-black placeholder-opacity-40 pl-2 cursor-pointer hover:bg-gray-300  delay-75  transition duration-200 ease-in-out focus:outline-none" /> 
             </div>            
             </header>
